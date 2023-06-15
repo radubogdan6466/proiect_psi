@@ -1,0 +1,34 @@
+[
+  {
+    "salariuIncadrare": 5000,
+    "nume": "Popescu Ion",
+    "cnp": 27463516263541,
+    "oreLucrate": "",
+    "cas": 0.105,
+    "impozit": 0.1,
+    "oreSuplimentare": 2,
+    "zileConcediu": 0,
+    "functia": "sofer",
+    "oreRegimNormal": 160,
+    "oreCo": 0,
+    "oreBO": 0,
+    "persIntretinute": 0,
+    "vImpozabil": 0
+  },
+  {
+    "salariuIncadrare": 8000,
+    "nume": "Ion Costica",
+    "cnp": 12463516263541,
+    "oreLucrate": "",
+    "cas": 0.105,
+    "impozit": 0.1,
+    "oreSuplimentare": 4,
+    "zileConcediu": 0,
+    "functia": "It-ist",
+    "oreRegimNormal": 160,
+    "oreCo": 0,
+    "oreBO": 0,
+    "persIntretinute": 0,
+    "vImpozabil": 0
+  }
+]

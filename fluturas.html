@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .employeeDetails {
+        display: flex;
+        justify-content: space-between;
+      }
+      .container {
+        max-height: 297mm;
+        max-width: 180mm;
+        margin: 0 auto;
+      }
+      .subtitlu {
+        border: 2px solid black;
+      }
+      .subtitlu h4 {
+        margin: 0;
+      }
+      .SalBaza {
+        display: flex;
+        border: 2px solid black;
+      }
+      .SalBaza h4 {
+        margin: 0;
+      }
+      .detail {
+        margin-right: 20px;
+      }
+      .detail p {
+        margin: 0;
+      }
+      .info p {
+        margin: 0;
+      }
+      .info {
+        margin-left: 20px;
+        text-align: center;
+      }
+      .detaliiSalariu {
+        display: flex;
+        max-width: 180mm;
+        border: 2px solid black;
+        border-bottom: 4px solid black;
+      }
+      .leftTabel {
+        width: 90mm;
+        display: flex;
+        justify-content: space-between;
+        border-right: 2px solid black;
+      }
+      .rightTabel {
+        display: flex;
+        text-align: left;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="titlu">
+        <h1>Sc eurocontab consult srl</h1>
+      </div>
+      <div class="subtitlu">
+        <div class="employeeDetails">
+          <div>
+            <h4>Nume:</h4>
+            <h4>Prenume:</h4>
+          </div>
+          <div>
+            <h4>Popescu</h4>
+            <h4>Ion</h4>
+          </div>
+          <div>
+            <h4>functia:</h4>
+          </div>
+          <div>
+            <h4>Sofer</h4>
+          </div>
+        </div>
+      </div>
+      <div class="SalBaza">
+        <div class="detail">
+          <h4>Sal de incadrare:</h4>
+          <h4>Salariu orar:</h4>
+        </div>
+        <div class="info">
+          <h4>5000</h4>
+          <h4>5000/160</h4>
+        </div>
+      </div>
+      <div class="detaliiSalariu">
+        <div class="leftTabel">
+          <div class="detail">
+            <p>Ore lucrate in regim normal:</p>
+            <p>Ore CO:</p>
+            <p>Ore BO:</p>
+            <p>Ore suplim:</p>
+            <p>Pers. intretinute:</p>
+            <p>Venit impozabil:</p>
+          </div>
+          <div class="info">
+            <p>160</p>
+            <p>0</p>
+            <p>0</p>
+            <p>1</p>
+            <p>3</p>
+            <p>0</p>
+          </div>
+        </div>
+        <div class="rightTabel">
+          <div class="detail">
+            <p>Suma ore lucrate in regim normal:</p>
+            <p>Sume CO:</p>
+            <p>Sume BO:</p>
+            <p>Sume ore Suplim</p>
+            <p>Adaos retinere brut</p>
+            <h4>Total realizat</h4>
+            <p>Fond somaj 1%</p>
+            <p>Font sanatate 6.5%</p>
+            <p>CAS 9.5%</p>
+            <p>Deducere</p>
+            <p>Impozit de plata</p>
+            <p>Salariu net</p>
+            <p>Avans Salariu</p>
+            <p>Rest de plata</p>
+          </div>
+          <div class="info">
+            <p>5000</p>
+            <p>0</p>
+            <p>0</p>
+            <p>10</p>
+            <p>0</p>
+            <h4>5000</h4>
+            <p>6</p>
+            <p>37</p>
+            <p>55</p>
+            <p>550</p>
+            <p>0</p>
+            <p>469</p>
+            <p>190</p>
+            <p>6280</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+import jsonData from "./angajati.json"; import React from "react"; import styles
+from "./pdf"; import { Page, Text, Document, StyleSheet, Image, View, } from
+"@react-pdf/renderer"; const PDFFile = ({ employee }) => { return (
+<Document>
+  <Page size="A4" style="{styles.page}">
+    <View className="container">
+      <View className="titlu">
+        <Text>
+          <Text style="{styles.heading}">Sc eurocontab consult srl</Text>
+        </Text>
+      </View>
+      <View className="subtitlu">
+        <View className="employeeDetails">
+          <View>
+            <Text>
+              <Text style="{styles.label}">Nume:</Text>
+              <Text style="{styles.value}">Popescu</Text>
+            </Text>
+            <Text>
+              <Text style="{styles.label}">Prenume:</Text>
+              <Text style="{styles.value}">Ion</Text>
+            </Text>
+          </View>
+          <View>
+            <Text>
+              <Text style="{styles.label}">functia:</Text>
+              <Text style="{styles.value}">Sofer</Text>
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View className="SalBaza">
+        <View className="detail">
+          <Text>
+            <Text style="{styles.label}">Sal de incadrare:</Text>
+            <Text style="{styles.label}">Salariu orar:</Text>
+          </Text>
+        </View>
+        <View className="info">
+          <Text>
+            <Text style="{styles.value}">5000</Text>
+            <Text style="{styles.value}">5000/160</Text>
+          </Text>
+        </View>
+      </View>
+      <View className="detaliiSalariu">
+        <View className="leftTabel">
+          <View className="detail">
+            <Text>
+              <Text style="{styles.label}">Ore lucrate in regim normal:</Text>
+              <Text style="{styles.label}">Ore CO:</Text>
+              <Text style="{styles.label}">Ore BO:</Text>
+              <Text style="{styles.label}">Ore suplim:</Text>
+              <Text style="{styles.label}">Pers. intretinute:</Text>
+              <Text style="{styles.label}">Venit impozabil:</Text>
+            </Text>
+          </View>
+          <View className="info">
+            <Text>
+              <Text style="{styles.value}">160</Text>
+              <Text style="{styles.value}">0</Text>
+              <Text style="{styles.value}">0</Text>
+              <Text style="{styles.value}">1</Text>
+              <Text style="{styles.value}">3</Text>
+              <Text style="{styles.value}">0</Text>
+            </Text>
+          </View>
+        </View>
+        <View className="rightTabel">
+          <View className="detail">
+            <Text>
+              <Text style="{styles.label}">
+                Suma ore lucrate in regim normal:
+              </Text>
+              <Text style="{styles.label}">Sume CO:</Text>
+              <Text style="{styles.label}">Sume BO:</Text>
+              <Text style="{styles.label}">Sume ore Suplim</Text>
+              <Text style="{styles.label}">Adaos retinere brut</Text>
+              <Text>Total realizat</Text>
+              <Text style="{styles.label}">Fond somaj 1%</Text>
+              <Text style="{styles.label}">Font sanatate 6.5%</Text>
+              <Text style="{styles.label}">CAS 9.5%</Text>
+              <Text style="{styles.label}">Deducere</Text>
+              <Text style="{styles.label}">Impozit de plata</Text>
+              <Text style="{styles.label}">Salariu net</Text>
+              <Text style="{styles.label}">Avans Salariu</Text>
+              <Text style="{styles.label}">Rest de plata</Text>
+            </Text>
+          </View>
+          <View className="info">
+            <Text>
+              <Text style="{styles.value}">5000</Text>
+              <Text style="{styles.value}">0</Text>
+              <Text style="{styles.value}">0</Text>
+              <Text style="{styles.value}">10</Text>
+              <Text style="{styles.value}">0</Text>
+              <Text>5000</Text>
+              <Text style="{styles.value}">6</Text>
+              <Text style="{styles.value}">37</Text>
+              <Text style="{styles.value}">55</Text>
+              <Text style="{styles.value}">550</Text>
+              <Text style="{styles.value}">0</Text>
+              <Text style="{styles.value}">469</Text>
+              <Text style="{styles.value}">190</Text>
+              <Text style="{styles.value}">6280</Text>
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </Page>
+</Document>
+); }; export default PDFFile;

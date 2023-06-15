@@ -1,0 +1,33 @@
+/* pdf.css */
+
+.App.creare-pdf {
+  margin: 20px;
+}
+
+.select-container {
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.download-button {
+  padding: 10px 20px;
+  background-color: #428bca;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pdf-viewer-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  height: 500px;
+}
+
+/* Alte stiluri specifice pentru vizualizatorul PDF */
