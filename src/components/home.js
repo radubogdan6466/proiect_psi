@@ -8,46 +8,18 @@ const Home = () => {
     <div>
       <div>
         <header>
-          <h1>Numele site-ului</h1>
-          <nav>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </nav>
+          <h1>Admin panel</h1>
         </header>
-
         <section>
-          <h2>Bun venit pe site-ul nostru!</h2>
-          <p>Aici veți găsi cele mai bune produse și servicii.</p>
-          <Link to="/creare-pdf">Creați PDF</Link>
+          <h2>Panou management informatii angajati</h2>
+          <Link to="/creare-pdf">
+            Genereaza fluturas pentru salariu angajati
+          </Link>
         </section>
-
-        <section>
-          <h2>Produse și servicii</h2>
-          <ul>
-            <li>Produs 1</li>
-            <li>Produs 2</li>
-            <li>Produs 3</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Recenzii clienți</h2>
-          <ul>
-            <li>Recenzie 1</li>
-            <li>Recenzie 2</li>
-            <li>Recenzie 3</li>
-          </ul>
-        </section>
-
         <footer>
-          <p>Informații de contact</p>
+          <p>Alte actiuni</p>
           <ul>
-            <li>Adresa</li>
-            <li>Telefon</li>
-            <li>Email</li>
+            <li>Intrudu angajat nou</li>
           </ul>
         </footer>
       </div>
