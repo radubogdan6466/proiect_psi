@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import CrearePdf from "./pdfPages/CrearePdf";
 import style from "../index.css";
 import { Link } from "react-router-dom";
+import AddUser from "./users/AddUser";
+import AllUsers from "./users/AllUsers";
 
 const Home = () => {
   return (
@@ -18,9 +20,8 @@ const Home = () => {
         </section>
         <footer>
           <p>Alte actiuni</p>
-          <ul>
-            <li>Intrudu angajat nou</li>
-          </ul>
+          <AddUser />
+          <AllUsers />
         </footer>
       </div>
     </div>
