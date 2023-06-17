@@ -1,5 +1,7 @@
 import { useState } from "react";
 import React from "react";
+import AllUsers from "./AllUsers";
+import { Navigate, useNavigate } from "react-router-dom";
 import {
   FormGroup,
   FormControl,
@@ -27,11 +29,13 @@ const defaultValue = {
 };
 const AddUser = () => {
   const [user, setUser] = useState(defaultValue);
+  const navigate = useNavigate();
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
   const addUserDetails = async () => {
     await addUser(user);
+    navigate("/AllUsers");
   };
   return (
     <Container>
