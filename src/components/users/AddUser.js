@@ -22,11 +22,30 @@ const Container = styled(FormGroup)`
   }
 `;
 const defaultValue = {
-  name: "",
-  username: "",
-  email: "",
-  phone: "",
+  nume: "",
+  prenume: "",
+  salBrut: "",
+  cnp: "",
+  functia: "",
+  telefon: "",
 };
+/*
+userId: { type: String, unique: true },
+  nume: String,
+  cnp: String,
+  oreLucrate: Number,
+  cas: Number,
+  impozit: Number,
+  oreSuplimentare: Number,
+  zileConcediu: Number,
+  functia: String,
+  oreRegimNormal: Number,
+  oreCo: Number,
+  oreBO: Number,
+  persIntretinute: Number,
+  vImpozabil: Number, 
+  */
+
 const AddUser = () => {
   const [user, setUser] = useState(defaultValue);
   const navigate = useNavigate();
@@ -41,20 +60,28 @@ const AddUser = () => {
     <Container>
       <Typography variant="h1">Add User</Typography>
       <FormControl>
-        <InputLabel>Name</InputLabel>
-        <Input onChange={onValueChange} name="name" />
+        <InputLabel>Nume</InputLabel>
+        <Input onChange={onValueChange} name="nume" />
       </FormControl>
       <FormControl>
-        <InputLabel>Username</InputLabel>
-        <Input onChange={onValueChange} name="username" />
+        <InputLabel>Prenume</InputLabel>
+        <Input onChange={onValueChange} name="prenume" />
       </FormControl>
       <FormControl>
-        <InputLabel>Email</InputLabel>
-        <Input onChange={onValueChange} name="email" />
+        <InputLabel>Sal Brut</InputLabel>
+        <Input onChange={onValueChange} name="salBrut" />
       </FormControl>
       <FormControl>
-        <InputLabel>Phone</InputLabel>
-        <Input onChange={onValueChange} name="phone" />
+        <InputLabel>Cnp</InputLabel>
+        <Input onChange={onValueChange} name="cnp" />
+      </FormControl>
+      <FormControl>
+        <InputLabel>Functia</InputLabel>
+        <Input onChange={onValueChange} name="functia" />
+      </FormControl>
+      <FormControl>
+        <InputLabel>Telefon</InputLabel>
+        <Input onChange={onValueChange} name="telefon" />
       </FormControl>
       <FormControl>
         <Button variant="contained" onClick={() => addUserDetails()}>

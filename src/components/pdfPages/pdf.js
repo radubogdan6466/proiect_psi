@@ -64,7 +64,7 @@ const styles = {
     borderLeftWidth: 0,
     borderTopWidth: 0,
     borderRightWidth: 1,
-    paddingLeft: 80,
+    paddingLeft: 60,
   },
   tableCell: {
     marginTop: 5,
@@ -72,8 +72,8 @@ const styles = {
   },
 
   pdfViewerContainer: {
-    width: "40%",
-    height: 500,
+    width: "100%",
+    height: 400,
   },
 };
 export default styles;

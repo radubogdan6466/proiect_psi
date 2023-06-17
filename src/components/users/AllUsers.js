@@ -36,8 +36,12 @@ const AllUsers = () => {
     getAllUsers();
   }, []);
   const getAllUsers = async () => {
-    let response = await getUsers();
-    setUsers(response.data);
+    try {
+      const response = await getUsers();
+      setUsers(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -45,20 +49,24 @@ const AllUsers = () => {
       <TableHead>
         <THead>
           <TableCell>Id</TableCell>
-          <TableCell>Name</TableCell>
-          <TableCell>Username</TableCell>
-          <TableCell>Email</TableCell>
-          <TableCell>Phone</TableCell>
+          <TableCell>Nume</TableCell>
+          <TableCell>Prenume</TableCell>
+          <TableCell>Sal brut</TableCell>
+          <TableCell>CNP</TableCell>
+          <TableCell>Functia</TableCell>
+          <TableCell>Telefon</TableCell>
         </THead>
       </TableHead>
       <TableBody>
         {users.map((user) => (
           <TRow key={user.userId}>
             <TableCell>{user.userId}</TableCell>
-            <TableCell>{user.name}</TableCell>
-            <TableCell>{user.username}</TableCell>
-            <TableCell>{user.email}</TableCell>
-            <TableCell>{user.phone}</TableCell>
+            <TableCell>{user.nume}</TableCell>
+            <TableCell>{user.prenume}</TableCell>
+            <TableCell>{user.salBrut}</TableCell>
+            <TableCell>{user.cnp}</TableCell>
+            <TableCell>{user.functia}</TableCell>
+            <TableCell>{user.telefon}</TableCell>
           </TRow>
         ))}
       </TableBody>
