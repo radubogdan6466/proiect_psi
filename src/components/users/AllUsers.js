@@ -2,7 +2,7 @@ import React from "react";
 import { getUsers } from "../../service/api.js";
 import { useEffect, useState } from "react";
 import NavBar from "../NavBar.js";
-
+import { Link } from "react-router-dom";
 import {
   TableRow,
   Table,
@@ -87,6 +87,8 @@ const AllUsers = () => {
                     width: 80,
                     height: 30,
                   }}
+                  component={Link}
+                  to={`/edit/${user._id}`}
                 >
                   Modifica
                 </Button>

@@ -15,3 +15,18 @@ export const getUsers = async () => {
     console.log("ups, eroare la returnare utilizatori API", error);
   }
 };
+
+export const getUser = async (id) => {
+  try {
+    return await axios.get(`${URL}/${id}`);
+  } catch (error) {
+    console.log("error la chemare user api", error);
+  }
+};
+export const editUser = async (user, id) => {
+  try {
+    return await axios.post(`${URL}/${id}`, user);
+  } catch (error) {
+    console.log("error la chemare user edit api", error);
+  }
+};

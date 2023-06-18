@@ -7,6 +7,7 @@ import AddUser from "./components/users/AddUser";
 import AllUsers from "./components/users/AllUsers";
 import Documente from "./components/Documente";
 import DescarcareContractAngajare from "./components/pdfPages/DescarcareContractAngajare.js";
+import EditUser from "./components/users/EditUser";
 import "./App.css";
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           path="/Descarcare-Contract-Angajare"
           element={<DescarcareContractAngajare />}
         />
+        <Route path="/edit/:id" element={<EditUser />} />
       </Routes>
     </div>
   );

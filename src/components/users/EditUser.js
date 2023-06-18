@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import AllUsers from "./AllUsers";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import NavBar from "../NavBar.js";
 
 import {
@@ -14,7 +14,7 @@ import {
   Button,
 } from "@mui/material";
 
-import { addUser } from "../../service/api";
+import { editUser, getUser } from "../../service/api";
 
 const Container = styled(FormGroup)`
   width: 50%;
@@ -48,52 +48,61 @@ userId: { type: String, unique: true },
   vImpozabil: Number, 
   */
 
-const AddUser = () => {
+const EditUser = () => {
   const [user, setUser] = useState(defaultValue);
   const navigate = useNavigate();
+  const { id } = useParams();
+  useEffect(() => {
+    loadUserDetails();
+  }, []);
+  const loadUserDetails = async () => {
+    const response = await getUser(id);
+    setUser(response.data);
+  };
+
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-  const addUserDetails = async () => {
-    await addUser(user);
+  const editUserDetails = async () => {
+    await editUser(user, id);
     navigate("/AllUsers");
   };
   return (
     <div>
       <NavBar />
       <Container>
-        <Typography variant="h4">Introdu date angajat</Typography>
+        <Typography variant="h4">Modifica datele</Typography>
         <FormControl>
           <InputLabel>Nume</InputLabel>
-          <Input onChange={onValueChange} name="nume" />
+          <Input onChange={onValueChange} name="nume" value={user.nume} />
         </FormControl>
         <FormControl>
           <InputLabel>Prenume</InputLabel>
-          <Input onChange={onValueChange} name="prenume" />
+          <Input onChange={onValueChange} name="prenume" value={user.prenume} />
         </FormControl>
         <FormControl>
           <InputLabel>Sal Brut</InputLabel>
-          <Input onChange={onValueChange} name="salBrut" />
+          <Input onChange={onValueChange} name="salBrut" value={user.salBrut} />
         </FormControl>
         <FormControl>
           <InputLabel>Cnp</InputLabel>
-          <Input onChange={onValueChange} name="cnp" />
+          <Input onChange={onValueChange} name="cnp" value={user.cnp} />
         </FormControl>
         <FormControl>
           <InputLabel>Functia</InputLabel>
-          <Input onChange={onValueChange} name="functia" />
+          <Input onChange={onValueChange} name="functia" value={user.functia} />
         </FormControl>
         <FormControl>
           <InputLabel>Telefon</InputLabel>
-          <Input onChange={onValueChange} name="telefon" />
+          <Input onChange={onValueChange} name="telefon" value={user.telefon} />
         </FormControl>
         <FormControl>
-          <Button variant="contained" onClick={() => addUserDetails()}>
-            Adauga
+          <Button variant="contained" onClick={() => editUserDetails()}>
+            Modifica Date
           </Button>
         </FormControl>
       </Container>
     </div>
   );
 };
-export default AddUser;
+export default EditUser;
