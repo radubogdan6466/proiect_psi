@@ -48,15 +48,9 @@ const NavBar = () => {
   return (
     <Header position="sticky">
       <Toolbar>
-        <Tabs to="/Home" exact>
-          Proiect psi
-        </Tabs>
-        <Tabs to="/AllUsers" exact>
-          Vizualizare date angajați
-        </Tabs>
-        <Tabs to="/AddUser" exact>
-          Adaugare date angajați
-        </Tabs>
+        <Tabs to="/Home">Proiect psi</Tabs>
+        <Tabs to="/AllUsers">Vizualizare date angajați</Tabs>
+        <Tabs to="/AddUser">Adaugare date angajați</Tabs>
         <Tabs color="inherit" onClick={handleMenuOpen}>
           Meniu
         </Tabs>
