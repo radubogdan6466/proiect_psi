@@ -2,6 +2,8 @@ import { useState } from "react";
 import React from "react";
 import AllUsers from "./AllUsers";
 import { Navigate, useNavigate } from "react-router-dom";
+import NavBar from "../NavBar.js";
+
 import {
   FormGroup,
   FormControl,
@@ -57,38 +59,41 @@ const AddUser = () => {
     navigate("/AllUsers");
   };
   return (
-    <Container>
-      <Typography variant="h1">Add User</Typography>
-      <FormControl>
-        <InputLabel>Nume</InputLabel>
-        <Input onChange={onValueChange} name="nume" />
-      </FormControl>
-      <FormControl>
-        <InputLabel>Prenume</InputLabel>
-        <Input onChange={onValueChange} name="prenume" />
-      </FormControl>
-      <FormControl>
-        <InputLabel>Sal Brut</InputLabel>
-        <Input onChange={onValueChange} name="salBrut" />
-      </FormControl>
-      <FormControl>
-        <InputLabel>Cnp</InputLabel>
-        <Input onChange={onValueChange} name="cnp" />
-      </FormControl>
-      <FormControl>
-        <InputLabel>Functia</InputLabel>
-        <Input onChange={onValueChange} name="functia" />
-      </FormControl>
-      <FormControl>
-        <InputLabel>Telefon</InputLabel>
-        <Input onChange={onValueChange} name="telefon" />
-      </FormControl>
-      <FormControl>
-        <Button variant="contained" onClick={() => addUserDetails()}>
-          Add user
-        </Button>
-      </FormControl>
-    </Container>
+    <div>
+      <NavBar />
+      <Container>
+        <Typography variant="h3">Introdu date angajat</Typography>
+        <FormControl>
+          <InputLabel>Nume</InputLabel>
+          <Input onChange={onValueChange} name="nume" />
+        </FormControl>
+        <FormControl>
+          <InputLabel>Prenume</InputLabel>
+          <Input onChange={onValueChange} name="prenume" />
+        </FormControl>
+        <FormControl>
+          <InputLabel>Sal Brut</InputLabel>
+          <Input onChange={onValueChange} name="salBrut" />
+        </FormControl>
+        <FormControl>
+          <InputLabel>Cnp</InputLabel>
+          <Input onChange={onValueChange} name="cnp" />
+        </FormControl>
+        <FormControl>
+          <InputLabel>Functia</InputLabel>
+          <Input onChange={onValueChange} name="functia" />
+        </FormControl>
+        <FormControl>
+          <InputLabel>Telefon</InputLabel>
+          <Input onChange={onValueChange} name="telefon" />
+        </FormControl>
+        <FormControl>
+          <Button variant="contained" onClick={() => addUserDetails()}>
+            Adauga
+          </Button>
+        </FormControl>
+      </Container>
+    </div>
   );
 };
 export default AddUser;

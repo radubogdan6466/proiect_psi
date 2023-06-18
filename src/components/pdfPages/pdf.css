@@ -1,13 +1,5 @@
 /* pdf.css */
 
-.App.creare-pdf {
-  margin: 20px;
-}
-
-.select-container {
-  margin-bottom: 20px;
-}
-
 .button-container {
   display: flex;
   justify-content: center;
@@ -25,9 +17,10 @@
 }
 
 .pdf-viewer-container {
-  border: 1px solid #ccc;
-  padding: 20px;
-  height: 500px;
+  height: 100%;
+  width: 90%;
+  align-items: center;
+  margin: auto !important;
 }
 
 /* Alte stiluri specifice pentru vizualizatorul PDF */
