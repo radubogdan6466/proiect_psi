@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Home from "../home";
 import { Link } from "react-router-dom";
+import { getUsers } from "../../service/api.js";
+
 import {
   Container,
   Typography,
