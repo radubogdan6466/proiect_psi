@@ -49,8 +49,8 @@ const NavBar = () => {
     <Header position="sticky">
       <Toolbar>
         <Tabs to="/Home">Proiect psi</Tabs>
-        <Tabs to="/AllUsers">Vizualizare date angajați</Tabs>
-        <Tabs to="/AddUser">Adaugare date angajați</Tabs>
+        <Tabs to="/AllUsers">Vizualizare angajați</Tabs>
+        <Tabs to="/AddUser">Adaugare angajați</Tabs>
         <Tabs color="inherit" onClick={handleMenuOpen}>
           Meniu
         </Tabs>
@@ -71,19 +71,24 @@ const NavBar = () => {
             to="/Descarcare-Fluturas"
             onClick={handleMenuClose}
           >
-            Generați fluturaș pentru salariu angajați
+            Generați fluturaș salariu
           </StyledMenuItem>
           <StyledMenuItem
             component={NavLink}
             to="/Descarcare-Contract-Angajare"
             onClick={handleMenuClose}
           >
-            Accesați Documente
+            Accesare contracte
           </StyledMenuItem>
 
           <StyledMenuItem onClick={handleMenuClose}>
             <a href="https://cloud.mongodb.com/v2/648c775ea618256da2f8b07f#/clusters/detail/psiProiect">
               Acceseaza mongoDB
+            </a>
+          </StyledMenuItem>
+          <StyledMenuItem onClick={handleMenuClose}>
+            <a href="https://baconipsum.com/?paras=5&type=all-meat&start-with-lorem=1">
+              Servicii tehnice
             </a>
           </StyledMenuItem>
         </StyledMenu>

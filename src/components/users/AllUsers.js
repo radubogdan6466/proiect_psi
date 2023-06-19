@@ -1,5 +1,5 @@
 import React from "react";
-import { getUsers, deleteUser } from "../../service/api.js";
+import { getUsers } from "../../service/api.js";
 import { useEffect, useState } from "react";
 import NavBar from "../NavBar.js";
 import { Link } from "react-router-dom";
@@ -50,10 +50,7 @@ const AllUsers = () => {
       console.log(error);
     }
   };
-  const deleteUserDetails = async (id) => {
-    await deleteUser(id);
-    getAllUsers();
-  };
+
   return (
     <div>
       <NavBar />
@@ -93,15 +90,7 @@ const AllUsers = () => {
                   component={Link}
                   to={`/edit/${user._id}`}
                 >
-                  Modifica
-                </Button>
-                <Button
-                  color="secondary"
-                  variant="contained"
-                  style={{ marginBottom: 10, width: 80, height: 30 }}
-                  onClick={() => deleteUserDetails(user._id)}
-                >
-                  Sterge
+                  Deschide
                 </Button>
               </TableCell>
             </TRow>

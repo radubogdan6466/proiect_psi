@@ -72,8 +72,8 @@ const styles = {
   },
 
   pdfViewerContainer: {
-    width: "100%",
-    height: 400,
+    width: "85%",
+    height: 500,
   },
 };
 export default styles;

@@ -1,29 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import jsonData from "../angajati.json";
 import { PDFViewer } from "@react-pdf/renderer";
 import styles from "./pdf";
 import "./pdf.css";
 import { getUsers } from "../../service/api.js";
 import NavBar from "../NavBar";
-import { Button } from "@mui/material";
+import { Button, TextField, styled } from "@mui/material";
 import ContractAngajare from "./ContractAngajat.js";
-
-export const AllUsers = () => {};
+import Autocomplete from "@mui/material/Autocomplete";
 
 const DescarcareContractAngajare = () => {
-  const [selectedEmployee, setSelectedEmployee] = useState(null);
-
-  const handleEmployeeChange = (event) => {
-    const selectedIndex = event.target.value;
-    setSelectedEmployee(Number(selectedIndex));
-  };
+  const [selectedUser, setSelectedUser] = useState(null);
   const [users, setUsers] = useState([]);
+  const [customUser, setCustomUser] = useState("");
+
+  const handleUserChange = (event, value) => {
+    if (value) {
+      if (value.customOption) {
+        setSelectedUser(null); // Reset selected user
+        setCustomUser(value.nume);
+      } else {
+        setSelectedUser(value.index);
+        setCustomUser("");
+      }
+    } else {
+      setSelectedUser(null); // Reset selected user
+      setCustomUser("");
+    }
+  };
 
   useEffect(() => {
     getAllUsers();
   }, []);
+
   const getAllUsers = async () => {
     try {
       const response = await getUsers();
@@ -33,32 +42,60 @@ const DescarcareContractAngajare = () => {
     }
   };
 
+  const options = [
+    ...users.map((user, index) => ({ index, nume: user.nume })),
+    { customOption: true, nume: customUser },
+  ];
+  const CustomAutocomplete = styled(Autocomplete)(({ theme }) => ({
+    "& .MuiInputBase-root": {
+      backgroundColor: "#f5f5f5",
+      borderRadius: theme.shape.borderRadius,
+      "&:hover": {
+        backgroundColor: "#e0e0e0",
+      },
+      "&.Mui-focused": {
+        backgroundColor: "#e0e0e0",
+      },
+    },
+  }));
   return (
     <div className="App creare-pdf">
       <NavBar />
-      <select value={selectedEmployee} onChange={handleEmployeeChange}>
-        <option value="">Selectează angajatul</option>
-        {jsonData.map((employee, index) => (
-          <option key={index} value={index}>
-            {employee.nume}
-          </option>
-        ))}
-      </select>
+      <CustomAutocomplete
+        options={options}
+        getOptionLabel={(option) => option.nume}
+        value={selectedUser !== null ? options[selectedUser] : customUser}
+        onChange={handleUserChange}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Selectează angajatul"
+            fullWidth
+            margin="normal"
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "#333",
+              },
+              "& .MuiInputBase-input": {
+                padding: "10px 12px",
+              },
+            }}
+          />
+        )}
+      />
 
-      {selectedEmployee !== null && (
+      {selectedUser !== null && (
         <div className="button-container">
           <PDFDownloadLink
-            document={
-              <ContractAngajare employee={jsonData[selectedEmployee]} />
-            }
-            fileName={`${jsonData[selectedEmployee]?.nume}_FORM.pdf`}
+            document={<ContractAngajare user={users[selectedUser]} />}
+            fileName={`${users[selectedUser]?.nume}_FORM.pdf`}
           >
             {({ loading }) =>
               loading ? (
                 <button className="download-button">Loading Document...</button>
               ) : (
                 <Button className="download-button" variant="contained">
-                  Descarca
+                  Descarcă
                 </Button>
               )
             }
@@ -67,11 +104,13 @@ const DescarcareContractAngajare = () => {
       )}
 
       <div className="pdf-viewer-container">
-        {selectedEmployee !== null && (
-          <PDFViewer style={styles.pdfViewerContainer}>
-            <ContractAngajare employee={jsonData[selectedEmployee]} />
-          </PDFViewer>
-        )}
+        <PDFViewer style={styles.pdfViewerContainer}>
+          {selectedUser !== null ? (
+            <ContractAngajare user={users[selectedUser]} />
+          ) : (
+            <div className="empty-viewer">Niciun utilizator selectat.</div>
+          )}
+        </PDFViewer>
       </div>
     </div>
   );

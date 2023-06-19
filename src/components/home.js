@@ -1,56 +1,81 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Container, Typography, Button, Grid, Box } from "@mui/material";
 import NavBar from "./NavBar";
+import { getUsers } from "../service/api";
 
 const Home = () => {
-  // State pentru datele angajaților
-  const [employees, setEmployees] = useState([]);
+  const [users, setUsers] = useState([]);
 
-  // Funcție pentru adăugarea unui angajat
-  const addEmployee = (employee) => {
-    setEmployees([...employees, employee]);
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = async () => {
+    try {
+      const response = await getUsers();
+      setUsers(response.data);
+    } catch (error) {
+      console.log("Eroare la preluarea utilizatorilor:", error);
+    }
   };
 
   return (
-    <div className="container">
+    <div>
       <NavBar />
-      <div>
-        <header>
-          <h1>Admin panel</h1>
-        </header>
-        <section>
-          <h2>Panou management informații angajați</h2>
-          <Link to="/creare-pdf">
-            Generează fluturaș pentru salariu angajați
-          </Link>
-        </section>
-        <section>
-          <h2>Angajați</h2>
-          <div className="employee-list">
-            {employees.length > 0 ? (
-              <ul>
-                {employees.map((employee, index) => (
-                  <li key={index}>
-                    <span>{employee.name}</span>
-                    <span>{employee.position}</span>
-                    <span>{employee.salary}</span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>Nu există angajați înregistrati.</p>
-            )}
-          </div>
-          <Link to="/adauga-angajat">Adaugă angajat</Link>
-        </section>
-        <section>
-          <h2>Rapoarte</h2>
-          <Link to="/rapoarte">Accesează rapoarte</Link>
-        </section>
+      <Container maxWidth="md">
+        <Box display="flex">
+          <Box flex={1}>
+            <section>
+              <Typography variant="h5" component="h2" gutterBottom>
+                Angajați
+              </Typography>
+              <div className="user-list">
+                <Typography variant="h6" gutterBottom>
+                  Total angajați: {users.length}
+                </Typography>
+              </div>
+            </section>
+            <section>
+              <Typography variant="h5" component="h2" gutterBottom>
+                Rapoarte
+              </Typography>
+              <Button
+                component={Link}
+                to="/rapoarte"
+                variant="contained"
+                color="primary"
+                size="large"
+                fullWidth
+              >
+                Accesează rapoarte
+              </Button>
+            </section>
+          </Box>
+          <Box flex={1}>
+            <section>
+              <Typography variant="h5" component="h2" gutterBottom>
+                Panou management informații angajați
+              </Typography>
+              <Button
+                component={Link}
+                to="/creare-pdf"
+                variant="contained"
+                color="primary"
+                size="large"
+                fullWidth
+              >
+                Generează fluturaș pentru salariu angajați
+              </Button>
+            </section>
+          </Box>
+        </Box>
         <footer>
-          <p>Alte acțiuni</p>
+          <Typography variant="body1" align="center">
+            Alte acțiuni
+          </Typography>
         </footer>
-      </div>
+      </Container>
     </div>
   );
 };
