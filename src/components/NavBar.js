@@ -2,6 +2,7 @@ import { AppBar, Toolbar, styled, Menu, MenuItem, Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
 import { styled as muiStyled } from "@mui/system";
+import Documente from "./Documente.js";
 
 const Header = muiStyled(AppBar)`
 background: #111111;
@@ -48,7 +49,7 @@ const NavBar = () => {
   return (
     <Header position="sticky">
       <Toolbar>
-        <Tabs to="/Home">Proiect psi</Tabs>
+        <Tabs to="/">Proiect psi</Tabs>
         <Tabs to="/AllUsers">Vizualizare angajați</Tabs>
         <Tabs to="/AddUser">Adaugare angajați</Tabs>
         <Tabs color="inherit" onClick={handleMenuOpen}>
@@ -72,6 +73,13 @@ const NavBar = () => {
             onClick={handleMenuClose}
           >
             Generați fluturaș salariu
+          </StyledMenuItem>
+          <StyledMenuItem
+            component={NavLink}
+            to="/Documente"
+            onClick={handleMenuClose}
+          >
+            Documente
           </StyledMenuItem>
           <StyledMenuItem
             component={NavLink}

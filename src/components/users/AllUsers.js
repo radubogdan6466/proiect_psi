@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { getUsers } from "../../service/api.js";
-import { useEffect, useState } from "react";
 import NavBar from "../NavBar.js";
 import { Link } from "react-router-dom";
 import {
@@ -11,6 +10,7 @@ import {
   TableHead,
   styled,
   Button,
+  TextField,
 } from "@mui/material";
 
 const StyledTable = styled(Table)`
@@ -38,10 +38,12 @@ const TRow = styled(TableRow)`
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     getAllUsers();
   }, []);
+
   const getAllUsers = async () => {
     try {
       const response = await getUsers();
@@ -51,9 +53,25 @@ const AllUsers = () => {
     }
   };
 
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredUsers = users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.prenume.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
       <NavBar />
+      <TextField
+        label="Caută utilizatori"
+        value={searchTerm}
+        onChange={handleSearch}
+        style={{ marginBottom: 10 }}
+      />
       <StyledTable>
         <TableHead>
           <THead>
@@ -68,10 +86,10 @@ const AllUsers = () => {
           </THead>
         </TableHead>
         <TableBody>
-          {users.map((user) => (
+          {filteredUsers.map((user) => (
             <TRow key={user.userId}>
               <TableCell>{user.userId}</TableCell>
-              <TableCell>{user.nume}</TableCell>
+              <TableCell>{user.name}</TableCell>
               <TableCell>{user.prenume}</TableCell>
               <TableCell>{user.salBrut}</TableCell>
               <TableCell>{user.cnp}</TableCell>
@@ -100,4 +118,5 @@ const AllUsers = () => {
     </div>
   );
 };
+
 export default AllUsers;

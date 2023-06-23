@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const URL = "http://localhost:8000";
 export const addUser = async (data) => {
   try {
@@ -35,5 +34,14 @@ export const deleteUser = async (id) => {
     return await axios.delete(`${URL}/${id}`);
   } catch (error) {
     console.log("error la stergere user edit api", error);
+  }
+};
+export const loginUser = async (data) => {
+  try {
+    const response = await axios.post(`${URL}/login`, data);
+    return response.data; // sau return response.data.isSuccess, în funcție de structura răspunsului API-ului
+  } catch (error) {
+    console.log("Ups, eroare la apelul API pentru autentificare", error);
+    throw error; // aruncă eroarea pentru a o gestiona în codul de apel
   }
 };

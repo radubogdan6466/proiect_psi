@@ -36,7 +36,7 @@ const ContractAngajare = ({ user }) => {
           <Text style={styles.paragraph}>
             Incheiat astazi, {user.dataAngajare}, intre angajatorul Tema PSI, cu
             sediul in UVT si codul fiscal CUI300667, reprezentat de Otniel
-            Didraga in calitate de angajator, si salariatul {user.nume}{" "}
+            Didraga in calitate de angajator, si salariatul {user.name}{" "}
             {user.prenume}, CNP {user.cnp}, domiciliat in {user.adresa}, in
             calitate de salariat.
           </Text>

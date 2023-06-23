@@ -65,7 +65,7 @@ const PDFFile = ({ user }) => {
               <Text style={styles.tableCell}>
                 Nume:
                 <Text style={{ height: 10 }}>&nbsp;&nbsp;&nbsp;&nbsp;</Text>
-                {user.nume}
+                {user.name}
               </Text>
               <Text style={styles.tableCell}>
                 Prenume:

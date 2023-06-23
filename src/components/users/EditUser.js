@@ -149,6 +149,24 @@ const EditUser = () => {
       <Container>
         <Typography variant="h4">Modifică date angajat</Typography>
         <FormControl>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={editUserDetails}
+            style={{ marginBottom: "20px" }}
+            disabled={isButtonDisabled}
+          >
+            Modifică
+          </Button>
+          <Button
+            color="error"
+            variant="contained"
+            onClick={() => deleteUserDetails(user._id)}
+          >
+            Sterge
+          </Button>
+        </FormControl>
+        <FormControl>
           <InputLabel>Nume</InputLabel>
           <Input
             onChange={onValueChange}
@@ -268,24 +286,6 @@ const EditUser = () => {
               Formatul trebuie să fie zi/luna/an
             </span>
           )}
-        </FormControl>
-        <FormControl>
-          <Button
-            variant="contained"
-            color="success"
-            onClick={editUserDetails}
-            style={{ marginBottom: "20px" }}
-            disabled={isButtonDisabled}
-          >
-            Modifică
-          </Button>
-          <Button
-            color="error"
-            variant="contained"
-            onClick={() => deleteUserDetails(user._id)}
-          >
-            Sterge
-          </Button>
         </FormControl>
       </Container>
     </div>

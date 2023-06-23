@@ -18,7 +18,7 @@ const DescarcareContractAngajare = () => {
     if (value) {
       if (value.customOption) {
         setSelectedUser(null); // Reset selected user
-        setCustomUser(value.nume);
+        setCustomUser(value.name);
       } else {
         setSelectedUser(value.index);
         setCustomUser("");
@@ -43,8 +43,8 @@ const DescarcareContractAngajare = () => {
   };
 
   const options = [
-    ...users.map((user, index) => ({ index, nume: user.nume })),
-    { customOption: true, nume: customUser },
+    ...users.map((user, index) => ({ index, name: user.name })),
+    { customOption: true, name: customUser },
   ];
   const CustomAutocomplete = styled(Autocomplete)(({ theme }) => ({
     "& .MuiInputBase-root": {
@@ -63,7 +63,7 @@ const DescarcareContractAngajare = () => {
       <NavBar />
       <CustomAutocomplete
         options={options}
-        getOptionLabel={(option) => option.nume}
+        getOptionLabel={(option) => option.name}
         value={selectedUser !== null ? options[selectedUser] : customUser}
         onChange={handleUserChange}
         renderInput={(params) => (
@@ -88,7 +88,7 @@ const DescarcareContractAngajare = () => {
         <div className="button-container">
           <PDFDownloadLink
             document={<ContractAngajare user={users[selectedUser]} />}
-            fileName={`${users[selectedUser]?.nume}_FORM.pdf`}
+            fileName={`${users[selectedUser]?.name}_FORM.pdf`}
           >
             {({ loading }) =>
               loading ? (

@@ -25,7 +25,7 @@ const Container = styled(FormGroup)`
 `;
 
 const defaultValue = {
-  nume: "",
+  name: "",
   prenume: "",
   salBrut: "",
   cnp: "",
@@ -37,6 +37,8 @@ const defaultValue = {
   cetatetnie: "",
   stareCivila: "",
   dataAngajare: null,
+  username: "",
+  password: "",
 };
 
 const AddUser = () => {
@@ -79,7 +81,7 @@ const AddUser = () => {
 
     const isDisabled =
       value === "" ||
-      user.nume === "" ||
+      user.name === "" ||
       user.prenume === "" ||
       user.salBrut === "" ||
       user.cnp === "" ||
@@ -114,7 +116,7 @@ const AddUser = () => {
         <Typography variant="h4">Introdu date angajat</Typography>
         <FormControl>
           <InputLabel>Nume</InputLabel>
-          <Input onChange={onValueChange} name="nume" required />
+          <Input onChange={onValueChange} name="name" required />
         </FormControl>
         <FormControl>
           <InputLabel>Prenume</InputLabel>
@@ -172,6 +174,14 @@ const AddUser = () => {
               Formatul trebuie să fie zi/luna/an
             </span>
           )}
+        </FormControl>
+        <FormControl>
+          <InputLabel>Utilizator</InputLabel>
+          <Input onChange={onValueChange} name="username" required />
+        </FormControl>
+        <FormControl>
+          <InputLabel>Parola</InputLabel>
+          <Input onChange={onValueChange} name="password" required />
         </FormControl>
         <FormControl>
           <Button
